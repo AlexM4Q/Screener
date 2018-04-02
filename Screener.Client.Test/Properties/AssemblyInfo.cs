@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Screener.WinApp")]
+[assembly: AssemblyTitle("Screener.Client.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Screener.WinApp")]
+[assembly: AssemblyProduct("Screener.Client.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e0da2674-7f6d-47c8-8299-9d50b72daf29")]
+[assembly: Guid("d1e0c3ae-a447-4f05-9e84-f4fa61b30027")]
 
 // Version information for an assembly consists of the following four values:
 //

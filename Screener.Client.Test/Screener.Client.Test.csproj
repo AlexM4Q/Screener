@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0DA2674-7F6D-47C8-8299-9D50B72DAF29}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Screener.WinApp</RootNamespace>
-    <AssemblyName>Screener.WinApp</AssemblyName>
+    <ProjectGuid>{D1E0C3AE-A447-4F05-9E84-F4FA61B30027}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Screener.Client.Test</RootNamespace>
+    <AssemblyName>Screener.Client.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,13 +22,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,31 +47,26 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rect.cs" />
-    <Compile Include="ScreenManager.cs" />
-    <Compile Include="ScreenViewer.cs">
+    <Compile Include="ScreenTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScreenViewer.Designer.cs">
-      <DependentUpon>ScreenViewer.cs</DependentUpon>
+    <Compile Include="ScreenTest.Designer.cs">
+      <DependentUpon>ScreenTest.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ScreenViewer.resx">
-      <DependentUpon>ScreenViewer.cs</DependentUpon>
+    <EmbeddedResource Include="ScreenTest.resx">
+      <DependentUpon>ScreenTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Screener.Client\Screener.Client.csproj">
+      <Project>{CDC07DB7-4DF7-4FEF-91B8-83ACDCB7B1A3}</Project>
+      <Name>Screener.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Screener.Core\Screener.Core.csproj">
       <Project>{D1339464-776B-4003-910B-8FFAE7239444}</Project>
       <Name>Screener.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Screener.Server\Screener.Server.csproj">
-      <Project>{BF662DF8-313D-4B42-AEAF-B6A6C0B1B25E}</Project>
-      <Name>Screener.Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

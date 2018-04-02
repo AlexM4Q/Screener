@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Forms;
 
-namespace Screener.WinApp
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace Screener.WinApp {
+
+    internal class Program {
+
+        private static void Main() {
+            Application.Run(new ScreenViewer());
         }
+
     }
+
 }
