@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Screener.MobileApp.Droid</RootNamespace>
     <AssemblyName>Screener.MobileApp.Android</AssemblyName>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -19,7 +19,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\Alex\VisualStudioProjects\Screener\Screener.MobileApp\Screener.MobileApp.Android\screener.jks</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>D:\Programms\Microsoft Visual Studio\Projects\Screener\Screener.MobileApp\Screener.MobileApp.Android\screener.jks</AndroidSigningKeyStore>
     <AndroidSigningStorePass>1qaz2wsx</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>screener</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>1qaz2wsx</AndroidSigningKeyPass>
@@ -51,7 +51,7 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
     <EnableProguard>false</EnableProguard>
-    <AndroidSupportedAbis />
+    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
