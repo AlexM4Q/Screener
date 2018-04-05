@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.Screener.MobileApp" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.futurteam.Screener" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="14" />
-	<application android:label="Screener.MobileApp.Android" android:icon="@drawable/icon"></application>
+	<application android:label="Screener" android:icon="@drawable/icon"></application>
 </manifest>
