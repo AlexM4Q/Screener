@@ -1,6 +1,6 @@
 ﻿namespace Screener.Client.Test
 {
-    partial class ScreenTest
+    internal partial class ScreenTest
     {
         /// <summary>
         /// Required designer variable.

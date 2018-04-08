@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Drawing;
+using ProtoBuf;
 
 namespace Screener.Core.Models.Messages {
 
     [Serializable]
-    public class ProcessScreenMessage : MessageBase {
+    [ProtoContract]
+    public sealed class ProcessScreenMessage : MessageBase {
 
-        public Bitmap Screen { get; }
-
-        public ProcessScreenMessage(Bitmap screen) {
-            Screen = screen;
-        }
+        [ProtoMember(1)]
+        public ImageBytes Image { get; set; }
 
     }
 

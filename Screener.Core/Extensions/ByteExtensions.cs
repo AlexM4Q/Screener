@@ -21,10 +21,6 @@ namespace Screener.Core.Extensions {
             }
         }
 
-        public static byte[] ToImageBytes(this Image img) => new ImageConverter().ConvertTo(img, typeof(byte[])) as byte[];
-
-        public static Image ToImage(this byte[] bytes) => new ImageConverter().ConvertFrom(bytes) as Image;
-
     }
 
 }

@@ -3,6 +3,7 @@
     public enum Status {
 
         Connected,
+
         Disconnected
 
     }

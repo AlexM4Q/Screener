@@ -11,17 +11,19 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
-namespace Screener.MobileApp.UWP
-{
-    public sealed partial class MainPage
-    {
-        public MainPage()
-        {
-            this.InitializeComponent();
+namespace Screener.MobileApp.UWP {
 
-            LoadApplication(new Screener.MobileApp.App());
+    public sealed partial class MainPage {
+
+        public MainPage() {
+            InitializeComponent();
+
+            LoadApplication(new MobileApp.App());
         }
+
     }
+
 }

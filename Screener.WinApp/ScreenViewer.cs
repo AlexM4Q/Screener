@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using Screener.Core.Models;
 using Screener.Core.Models.Messages;
 using Screener.Server;
+using Screener.WinApp.Extensions;
 
 namespace Screener.WinApp {
 
@@ -22,7 +24,16 @@ namespace Screener.WinApp {
             server.OnClientConnected = x => {
                 new Thread(() => {
                     while (true) {
-                        x.Send(new ProcessScreenMessage(ScreenManager.PrintWindow(window)));
+                        var image = ScreenManager.PrintWindow(window);
+
+                        x.Send(new ProcessScreenMessage {
+                            Image = new ImageBytes {
+                                Bytes = image.ToBytes(),
+                                Width = image.Width,
+                                Height = image.Height
+                            }
+                        });
+
                         Thread.Sleep(100);
                     }
                 }).Start();

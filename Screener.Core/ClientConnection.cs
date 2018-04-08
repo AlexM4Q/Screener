@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
+using ProtoBuf;
 using Screener.Core.Models.Messages;
 
 namespace Screener.Core {
@@ -50,7 +51,7 @@ namespace Screener.Core {
                     var message = MessagesQueue[0];
 
                     try {
-                        new BinaryFormatter().Serialize(Client.GetStream(), message);
+                        Serializer.SerializeWithLengthPrefix(Client.GetStream(), message, PrefixStyle.Fixed32);
                     } catch {
                         Stop();
                     } finally {
@@ -66,7 +67,8 @@ namespace Screener.Core {
             while (Status != Status.Disconnected) {
                 if (Client.Available > 0) {
                     try {
-                        OnMessageReceived(new BinaryFormatter().Deserialize(Client.GetStream()) as MessageBase);
+                        var messageBase = Serializer.DeserializeWithLengthPrefix<MessageBase>(Client.GetStream(), PrefixStyle.Fixed32);
+                        OnMessageReceived(messageBase);
                     } catch (Exception e) {
                         var ex = new Exception("Unknown message recieved. Could not deserialize the stream", e);
                         Debug.WriteLine(ex.Message);

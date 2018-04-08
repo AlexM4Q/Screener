@@ -33,9 +33,15 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net, Version=2.3.7.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.3.7\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,14 +66,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Screener.Client\Screener.Client.csproj">
-      <Project>{CDC07DB7-4DF7-4FEF-91B8-83ACDCB7B1A3}</Project>
-      <Name>Screener.Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Screener.Core\Screener.Core.csproj">
-      <Project>{D1339464-776B-4003-910B-8FFAE7239444}</Project>
-      <Name>Screener.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
+  <Import Project="..\Screener.Core\Screener.Core.projitems" Label="Shared" />
+  <Import Project="..\Screener.Client\Screener.Client.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

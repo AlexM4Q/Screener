@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>97815644-dcb1-4d4e-9ef2-6fdfbb7fa2b3</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Screener.Core</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ClientConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ByteExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ImageBytes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\MessageBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ProcessScreenMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Status.cs" />
+  </ItemGroup>
+</Project>

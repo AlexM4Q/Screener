@@ -1,11 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Screener.MobileApp"
              x:Class="Screener.MobileApp.MainPage">
+    <StackLayout>
+        <Label Text="Welcome to Xamarin.Forms!"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+        <Entry x:Name="IpAdress" Text="127.0.0.1" />
+        <Button Text="Connect" Clicked="OnConnect" />
 
+        <Image x:Name="ScreenImage" BackgroundColor="DeepPink" WidthRequest="100" HeightRequest="100"/>
+    </StackLayout>
 </ContentPage>
