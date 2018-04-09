@@ -17,7 +17,11 @@ namespace Screener.MobileApp {
             var ipAdress = IpAdress.Text;
 
             var client = new ScreenerClient(ipAdress, 11000) {
-                OnProcessScreenMessage = screenMessage => { Device.BeginInvokeOnMainThread(() => { ScreenImage.Source = ImageSource.FromStream(() => new MemoryStream(screenMessage.Image.Bytes)); }); }
+                OnProcessScreenMessage = screenMessage => {
+                    Device.BeginInvokeOnMainThread(() => {
+                        ScreenImage.Source = ImageSource.FromStream(() => new MemoryStream(screenMessage.Image.Bytes));
+                    });
+                }
             };
         }
 

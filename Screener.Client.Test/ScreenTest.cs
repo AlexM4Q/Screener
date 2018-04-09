@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Screener.Core.Extensions;
+using Screener.Core.Win.Extensions;
 
 namespace Screener.Client.Test {
 
@@ -14,7 +14,7 @@ namespace Screener.Client.Test {
         protected override void OnShown(EventArgs e) {
             base.OnShown(e);
 
-            var client = new ScreenerClient("127.0.0.1", 11000) {OnProcessScreenMessage = x => ScreenViewer.Image = x.Image.Bytes.ToObject<Bitmap>()};
+            var client = new ScreenerClient("127.0.0.1", 11000) {OnProcessScreenMessage = x => ScreenViewer.Image = x.Image.Bytes.ToImage()};
         }
 
     }

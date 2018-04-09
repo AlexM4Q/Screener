@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using Screener.Core.Models;
 using Screener.Core.Models.Messages;
+using Screener.Core.Win.Extensions;
 using Screener.Server;
-using Screener.WinApp.Extensions;
+using Screener.WinApp.Entities;
 
 namespace Screener.WinApp {
 
@@ -34,10 +36,15 @@ namespace Screener.WinApp {
                             }
                         });
 
-                        Thread.Sleep(100);
+                        Thread.Sleep(30);
                     }
                 }).Start();
             };
+        }
+
+        private void OnFpsSliderScroll(object sender, EventArgs e) {
+            var fps = FpsSlider.Value;
+            FpsLabel.Text = fps.ToString();
         }
 
     }

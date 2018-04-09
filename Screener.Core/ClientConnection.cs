@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using ProtoBuf;
 using Screener.Core.Models.Messages;
@@ -51,7 +50,11 @@ namespace Screener.Core {
                     var message = MessagesQueue[0];
 
                     try {
+
+                        var watch = new Stopwatch();
+                        watch.Start();
                         Serializer.SerializeWithLengthPrefix(Client.GetStream(), message, PrefixStyle.Fixed32);
+                        watch.Stop();
                     } catch {
                         Stop();
                     } finally {

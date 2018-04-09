@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ClientConnection.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ByteExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ImageBytes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\MessageBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ProcessScreenMessage.cs" />

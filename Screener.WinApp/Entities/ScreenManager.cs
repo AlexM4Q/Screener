@@ -3,15 +3,15 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
-namespace Screener.WinApp {
+namespace Screener.WinApp.Entities {
 
     internal class ScreenManager {
 
         [DllImport("user32.dll", SetLastError = true)]
-        internal static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         [DllImport("user32.dll")]
-        public static extern bool GetWindowRect(IntPtr hWnd, out Rect lpRect);
+        public static extern bool GetWindowRect(IntPtr hWnd, out Rectangle lpRect);
 
         [DllImport("user32.dll")]
         public static extern bool PrintWindow(IntPtr hWnd, IntPtr hdcBlt, int nFlags);
@@ -21,11 +21,11 @@ namespace Screener.WinApp {
 
             var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             var g = Graphics.FromImage(bitmap);
-            var handleBitmap = g.GetHdc();
+            var handle = g.GetHdc();
 
-            PrintWindow(window, handleBitmap, 0);
+            PrintWindow(window, handle, 0);
 
-            g.ReleaseHdc(handleBitmap);
+            g.ReleaseHdc(handle);
             g.Dispose();
 
             return bitmap;

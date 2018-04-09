@@ -1,16 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Screener.MobileApp.MainPage">
-    <StackLayout>
-        <Label Text="Welcome to Xamarin.Forms!"
-               VerticalOptions="Center"
-               HorizontalOptions="Center" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
 
-        <Entry x:Name="IpAdress" Text="127.0.0.1" />
-        <Button Text="Connect" Clicked="OnConnect" />
+        <Entry x:Name="IpAdress"
+               Grid.Row="0"
+               Grid.Column="0"
+               Text="127.0.0.1"/>
 
-        <Image x:Name="ScreenImage" BackgroundColor="DeepPink" WidthRequest="100" HeightRequest="100"/>
-    </StackLayout>
+        <Button Grid.Row="0"
+                Grid.Column="1"
+                Text="Connect"
+                Clicked="OnConnect"/>
+
+        <Image x:Name="ScreenImage"
+               Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               BackgroundColor="DeepPink"
+               Aspect="AspectFill"/>
+    </Grid>
 </ContentPage>

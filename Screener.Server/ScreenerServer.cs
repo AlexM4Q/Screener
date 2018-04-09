@@ -6,7 +6,7 @@ using System.Net.Sockets;
 namespace Screener.Server {
 
     public class ScreenerServer {
-
+        
         private readonly IList<ScreenerConnection> _connections;
 
         private readonly int _port;

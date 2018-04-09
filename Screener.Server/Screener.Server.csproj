@@ -54,6 +54,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\Screener.Core\Screener.Core.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\Screener.Core.Win\Screener.Core.Win.csproj">
+      <Project>{0d14cbc1-eafa-4f4e-a628-8cb8d5ec2b9c}</Project>
+      <Name>Screener.Core.Win</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
