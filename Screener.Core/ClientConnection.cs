@@ -1,86 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-using ProtoBuf;
 using Screener.Core.Models.Messages;
 
 namespace Screener.Core {
 
-    public abstract class ClientConnection {
+    public abstract class ClientConnection : IDisposable {
 
-        protected readonly TcpClient Client;
+        protected readonly TcpConnection TcpConnection;
 
-        protected readonly IList<MessageBase> MessagesQueue;
+        protected readonly UdpConnection UdpConnection;
 
-        protected Status Status;
+        protected Status Status { get; set; }
 
-        protected Thread ReceivingThread;
+        public TcpClient TcpClient => TcpConnection.TcpClient;
 
-        protected Thread SendingThread;
+        public UdpClient UdpClient => UdpConnection.UdpClient;
 
-        protected ClientConnection(TcpClient client) {
-            Client = client;
-            Client.ReceiveBufferSize = 16 * 1024;
-            Client.SendBufferSize = 16 * 1024;
-
-            MessagesQueue = new List<MessageBase>();
-
-            ReceivingThread = new Thread(ReceivingMethod) {IsBackground = true};
-            ReceivingThread.Start();
-
-            SendingThread = new Thread(SendingMethod) {IsBackground = true};
-            SendingThread.Start();
+        protected ClientConnection(TcpClient client, int udpReceivePort, int udpSendPort) {
+            TcpConnection = new TcpConnection(client) {
+                OnMessage = OnTcpMessageReceived,
+                GetStatus = () => Status
+            };
+            UdpConnection = new UdpConnection(udpReceivePort, udpSendPort) {
+                OnMessage = OnUdpMessageReceived,
+                GetStatus = () => Status
+            };
         }
 
-        public void Stop() {
+        public void Dispose() {
             Status = Status.Disconnected;
+            TcpConnection.Dispose();
+            UdpConnection.Dispose();
         }
 
-        public void Send(MessageBase message) {
-            MessagesQueue.Add(message);
-        }
+        public void SendViaTcp(MessageBase message) => TcpConnection.Send(message);
 
-        protected abstract void OnMessageReceived(MessageBase messageBase);
+        public void SendViaUdp(MessageBase message) => UdpConnection.Send(message);
 
-        private void SendingMethod() {
-            while (Status != Status.Disconnected) {
-                if (MessagesQueue.Count > 0) {
-                    var message = MessagesQueue[0];
+        protected abstract void OnTcpMessageReceived(MessageBase message);
 
-                    try {
-
-                        var watch = new Stopwatch();
-                        watch.Start();
-                        Serializer.SerializeWithLengthPrefix(Client.GetStream(), message, PrefixStyle.Fixed32);
-                        watch.Stop();
-                    } catch {
-                        Stop();
-                    } finally {
-                        MessagesQueue.Remove(message);
-                    }
-                }
-
-                Thread.Sleep(30);
-            }
-        }
-
-        private void ReceivingMethod() {
-            while (Status != Status.Disconnected) {
-                if (Client.Available > 0) {
-                    try {
-                        var messageBase = Serializer.DeserializeWithLengthPrefix<MessageBase>(Client.GetStream(), PrefixStyle.Fixed32);
-                        OnMessageReceived(messageBase);
-                    } catch (Exception e) {
-                        var ex = new Exception("Unknown message recieved. Could not deserialize the stream", e);
-                        Debug.WriteLine(ex.Message);
-                    }
-                }
-
-                Thread.Sleep(30);
-            }
-        }
+        protected abstract void OnUdpMessageReceived(MessageBase message);
 
     }
 

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using Screener.Core.Models;
 using Screener.Core.Models.Messages;
 using Screener.Core.Win.Extensions;
-using Screener.Server;
 using Screener.WinApp.Entities;
 
 namespace Screener.WinApp {
@@ -20,15 +18,13 @@ namespace Screener.WinApp {
             base.OnShown(e);
 
             var window = ScreenManager.FindWindow(null, "Визуальные закладки - Mozilla Firefox");
-            var server = new ScreenerServer(11000);
-            server.Start();
 
-            server.OnClientConnected = x => {
+            ScreenerAppContext.Instance.Server.OnClientConnected = x => {
                 new Thread(() => {
                     while (true) {
                         var image = ScreenManager.PrintWindow(window);
 
-                        x.Send(new ProcessScreenMessage {
+                        x.SendViaUdp(new ProcessScreenMessage {
                             Image = new ImageBytes {
                                 Bytes = image.ToBytes(),
                                 Width = image.Width,

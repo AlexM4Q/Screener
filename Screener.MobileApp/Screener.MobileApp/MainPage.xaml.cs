@@ -16,13 +16,13 @@ namespace Screener.MobileApp {
         public void OnConnect(object sender, EventArgs e) {
             var ipAdress = IpAdress.Text;
 
-            var client = new ScreenerClient(ipAdress, 11000) {
-                OnProcessScreenMessage = screenMessage => {
-                    Device.BeginInvokeOnMainThread(() => {
-                        ScreenImage.Source = ImageSource.FromStream(() => new MemoryStream(screenMessage.Image.Bytes));
-                    });
-                }
-            };
+            //var client = new ScreenerClient(ipAdress, 11211) {
+            //    OnProcessScreenMessage = screenMessage => {
+            //        Device.BeginInvokeOnMainThread(() => {
+            //            ScreenImage.Source = ImageSource.FromStream(() => new MemoryStream(screenMessage.Image.Bytes));
+            //        });
+            //    }
+            //};
         }
 
     }

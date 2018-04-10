@@ -8,13 +8,13 @@ namespace Screener.WinApp.Entities {
     internal class ScreenManager {
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        public static extern IntPtr FindWindow(string lpClassName, string windowName);
 
         [DllImport("user32.dll")]
-        public static extern bool GetWindowRect(IntPtr hWnd, out Rectangle lpRect);
+        public static extern bool GetWindowRect(IntPtr window, out Rectangle rect);
 
         [DllImport("user32.dll")]
-        public static extern bool PrintWindow(IntPtr hWnd, IntPtr hdcBlt, int nFlags);
+        public static extern bool PrintWindow(IntPtr window, IntPtr hdcBlt, int nFlags);
 
         public static Bitmap PrintWindow(IntPtr window) {
             GetWindowRect(window, out var rect);

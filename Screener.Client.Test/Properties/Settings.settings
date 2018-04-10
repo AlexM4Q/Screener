@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Screener.Client.Test.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UdpSendPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">22122</Value>
+    </Setting>
+    <Setting Name="UdpReceivePort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">22121</Value>
+    </Setting>
+    <Setting Name="Host" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="TcpPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">11211</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -9,13 +9,17 @@ namespace Screener.Client {
 
         public Action<ProcessScreenMessage> OnProcessScreenMessage { get; set; }
 
-        public ScreenerClient(string adress, int port) : base(new TcpClient()) {
-            Client.Connect(adress, port);
+        public ScreenerClient(string adress, int tcpPort, int udpReceivePort, int udpSendPort) : base(new TcpClient(), udpReceivePort, udpSendPort) {
+            TcpClient.Connect(adress, tcpPort);
             Status = Status.Connected;
         }
 
-        protected override void OnMessageReceived(MessageBase messageBase) {
-            switch (messageBase) {
+        protected override void OnTcpMessageReceived(MessageBase message) {
+            throw new NotImplementedException();
+        }
+
+        protected override void OnUdpMessageReceived(MessageBase message) {
+            switch (message) {
                 case ProcessScreenMessage processScreenMessage:
                     OnProcessScreenMessage?.Invoke(processScreenMessage);
                     break;

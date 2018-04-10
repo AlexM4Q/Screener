@@ -13,6 +13,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\ImageBytes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\MessageBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ProcessScreenMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RemoteConnection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Status.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TcpConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UdpConnection.cs" />
   </ItemGroup>
 </Project>
