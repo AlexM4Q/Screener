@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Net;
 using System.Net.Sockets;
 using Screener.Core.Models.Messages;
 
-namespace Screener.Core {
+namespace Screener.Core.Connection {
 
     public abstract class ClientConnection : IDisposable {
 

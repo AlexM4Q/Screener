@@ -2,7 +2,7 @@
 using System.Threading;
 using Screener.Core.Models.Messages;
 
-namespace Screener.Core {
+namespace Screener.Core.Connection {
 
     public abstract class RemoteConnection : IDisposable {
 

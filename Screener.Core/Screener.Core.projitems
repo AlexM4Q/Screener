@@ -9,13 +9,19 @@
     <Import_RootNamespace>Screener.Core</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ClientConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\ClientConnection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ImageBytes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\MessageBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Messages\ProcessScreenMessage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)RemoteConnection.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Status.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TcpConnection.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)UdpConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\RemoteConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\Status.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\TcpConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection\UdpConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Transaction\TransactionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Transaction\TransactionMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Transaction\TransactionPool.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Connection\" />
   </ItemGroup>
 </Project>

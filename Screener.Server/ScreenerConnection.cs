@@ -1,5 +1,5 @@
 ﻿using System.Net.Sockets;
-using Screener.Core;
+using Screener.Core.Connection;
 using Screener.Core.Models.Messages;
 
 namespace Screener.Server {

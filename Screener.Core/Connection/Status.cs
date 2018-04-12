@@ -1,4 +1,4 @@
-﻿namespace Screener.Core {
+﻿namespace Screener.Core.Connection {
 
     public enum Status {
 

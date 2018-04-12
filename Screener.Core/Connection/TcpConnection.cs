@@ -6,7 +6,7 @@ using System.Threading;
 using ProtoBuf;
 using Screener.Core.Models.Messages;
 
-namespace Screener.Core {
+namespace Screener.Core.Connection {
 
     public class TcpConnection : RemoteConnection {
 

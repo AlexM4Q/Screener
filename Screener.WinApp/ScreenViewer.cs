@@ -17,7 +17,8 @@ namespace Screener.WinApp {
         protected override void OnShown(EventArgs e) {
             base.OnShown(e);
 
-            var window = ScreenManager.FindWindow(null, "Визуальные закладки - Mozilla Firefox");
+            var window = ScreenManager.FindWindow(null, "Mozilla Firefox");
+            //var window = ScreenManager.FindWindow(null, "Визуальные закладки - Mozilla Firefox");
 
             ScreenerAppContext.Instance.Server.OnClientConnected = x => {
                 new Thread(() => {
