@@ -14,12 +14,14 @@ namespace Screener.Client.Test {
         protected override void OnShown(EventArgs e) {
             base.OnShown(e);
 
-            var client = new ScreenerClient(
-                Settings.Default.Host,
-                Settings.Default.TcpPort,
-                Settings.Default.UdpReceivePort,
-                Settings.Default.UdpSendPort
-            ) {OnProcessScreenMessage = x => ScreenViewer.Image = x.Image.Bytes.ToImage()};
+            //var client = new ScreenerClient(
+            //    Settings.Default.Host,
+            //    Settings.Default.TcpPort,
+            //    Settings.Default.UdpReceivePort,
+            //    Settings.Default.UdpSendPort
+            //) {OnProcessScreenMessage = x => ScreenViewer.Image = x.Image.Bytes.ToImage()};
+
+            var client = new ScreenerClient("127.0.0.1", 11211, 22121, 22122) { OnProcessScreenMessage = x => ScreenViewer.Image = x.Image.Bytes.ToImage() };
         }
 
     }

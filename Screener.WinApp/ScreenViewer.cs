@@ -8,7 +8,7 @@ using Screener.WinApp.Entities;
 
 namespace Screener.WinApp {
 
-    public partial class ScreenViewer : Form {
+    internal partial class ScreenViewer : Form {
 
         public ScreenViewer() {
             InitializeComponent();
@@ -17,8 +17,9 @@ namespace Screener.WinApp {
         protected override void OnShown(EventArgs e) {
             base.OnShown(e);
 
-            var window = ScreenManager.FindWindow(null, "Mozilla Firefox");
-            //var window = ScreenManager.FindWindow(null, "Визуальные закладки - Mozilla Firefox");
+            //var window = ScreenManager.FindWindow(null, "Mozilla Firefox");
+            var window = ScreenManager.FindWindow(null, "Визуальные закладки - Mozilla Firefox");
+            //var window = ScreenManager.FindWindow(null, "Проигрыватель Windows Media");
 
             ScreenerAppContext.Instance.Server.OnClientConnected = x => {
                 new Thread(() => {

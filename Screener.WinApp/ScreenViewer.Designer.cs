@@ -1,6 +1,6 @@
 ﻿namespace Screener.WinApp
 {
-    partial class ScreenViewer
+   internal partial class ScreenViewer
     {
         /// <summary>
         /// Required designer variable.

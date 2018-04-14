@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 using Screener.Core.Connection;
 using Screener.Core.Models.Messages;
 
@@ -8,16 +9,17 @@ namespace Screener.Server {
 
         public ScreenerConnection(TcpClient client, int udpReceivePort, int udpSendPort) : base(client, udpReceivePort, udpSendPort) {
             Status = Status.Connected;
+
+            Start();
         }
 
         protected override void OnTcpMessageReceived(MessageBase message) {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         protected override void OnUdpMessageReceived(MessageBase message) {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-
     }
 
 }

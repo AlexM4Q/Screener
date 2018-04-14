@@ -155,8 +155,8 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.8" />
   </ItemGroup>
   <Import Project="..\Screener.MobileApp\Screener.MobileApp.projitems" Label="Shared" />
-  <Import Project="..\..\Screener.Core\Screener.Core.projitems" Label="Shared" />
   <Import Project="..\..\Screener.Client\Screener.Client.projitems" Label="Shared" />
+  <Import Project="..\..\Screener.Core\Screener.Core.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

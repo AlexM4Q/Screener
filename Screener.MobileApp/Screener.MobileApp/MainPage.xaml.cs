@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Screener.Client;
+using Screener.Core.Models.Messages;
 using Xamarin.Forms;
 
 namespace Screener.MobileApp {
@@ -11,18 +12,12 @@ namespace Screener.MobileApp {
             InitializeComponent();
         }
 
-        private static volatile bool a = true;
-
         public void OnConnect(object sender, EventArgs e) {
             var ipAdress = IpAdress.Text;
 
-            //var client = new ScreenerClient(ipAdress, 11211) {
-            //    OnProcessScreenMessage = screenMessage => {
-            //        Device.BeginInvokeOnMainThread(() => {
-            //            ScreenImage.Source = ImageSource.FromStream(() => new MemoryStream(screenMessage.Image.Bytes));
-            //        });
-            //    }
-            //};
+            var client = new ScreenerClient(ipAdress, 11211, 22121, 22122) {
+                OnProcessScreenMessage = screenMessage => Device.BeginInvokeOnMainThread(() => ScreenImage.Source = ImageSource.FromStream(() => new MemoryStream(screenMessage.Image.Bytes)))
+            };
         }
 
     }

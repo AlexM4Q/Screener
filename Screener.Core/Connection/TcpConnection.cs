@@ -8,24 +8,47 @@ using Screener.Core.Models.Messages;
 
 namespace Screener.Core.Connection {
 
+    /// <summary>
+    /// TCP соединения
+    /// </summary>
     public class TcpConnection : RemoteConnection {
 
+        /// <summary>
+        /// Очередь сообщений
+        /// </summary>
         protected readonly IList<MessageBase> MessagesQueue;
 
+        /// <summary>
+        /// TCP клиент
+        /// </summary>
         internal readonly TcpClient TcpClient;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="client">TCP клиент</param>
         public TcpConnection(TcpClient client) {
             MessagesQueue = new List<MessageBase>();
 
             TcpClient = client;
-            TcpClient.ReceiveBufferSize = 16 * 1024;
-            TcpClient.SendBufferSize = 16 * 1024;
+            TcpClient.ReceiveBufferSize = 60 * 1024;
+            TcpClient.SendBufferSize = 60 * 1024;
         }
 
+        /// <summary>
+        /// Отключение
+        /// </summary>
         public override void Dispose() => TcpClient?.Dispose();
 
+        /// <summary>
+        /// Добавление сообщения в очередь на отправку
+        /// </summary>
+        /// <param name="message">Сообщения</param>
         public void Send(MessageBase message) => MessagesQueue.Add(message);
 
+        /// <summary>
+        /// Процесс получения сообщений
+        /// </summary>
         protected override void Receiving() {
             while (Connected) {
                 if (TcpClient.Available > 0) {
@@ -36,10 +59,13 @@ namespace Screener.Core.Connection {
                     }
                 }
 
-                Thread.Sleep(30);
+                Thread.Sleep(ReceivingDelay);
             }
         }
 
+        /// <summary>
+        /// Процесс отправки сообщений
+        /// </summary>
         protected override void Sending() {
             while (Connected) {
                 if (MessagesQueue.Count > 0) {
@@ -54,7 +80,7 @@ namespace Screener.Core.Connection {
                     }
                 }
 
-                Thread.Sleep(30);
+                Thread.Sleep(SendingDelay);
             }
         }
 
